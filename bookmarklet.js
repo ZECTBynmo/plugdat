@@ -1,1 +1,0 @@
-javascript:(function(){$('body').append('<script src=\'http://deve.rs/tt/aa.js\'></script>');})();
