@@ -1,7 +1,7 @@
 API.on(API.CHAT_COMMAND, callback); function callback(value) { 
 	switch( value ) {
 	    case "/whatever":
-	        API.sendChat( "¯\_(ツ)_/¯" );
+	        API.sendChat( "¯\\_(ツ)_/¯" );
 	        break;
 	    case "/tableflip":
 	        API.sendChat( "(╯°□°）╯︵ ┻━┻" );
