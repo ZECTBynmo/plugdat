@@ -12,5 +12,8 @@ API.on(API.CHAT_COMMAND, callback); function callback(value) {
         case "/seriousface":
         	API.sendChat( "ಠ_ಠ" );
         	break;
+    	case "/monocle":
+        	API.sendChat( "ಠ_ರೃ" );
+        	break;
 	}
 }
