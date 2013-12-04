@@ -74,9 +74,10 @@ PlugDat.prototype.setupChatHandlers = function() {
 					commands[iCommand];
 			}
 		}
-	}
+	});
 }
 
+console.log( commands );
 var commands = {
 	"/show": function() {
 		$("#playback").slideDown();
