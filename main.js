@@ -14,9 +14,53 @@ function PlugDat() {
 	// Setup various components
 	this.startAutoWoot();
 	this.setupChatHandlers();
+	this.setupAutoSkip();
 
 	// Inject something into the page to mark that we're here
 	$("#room-name").append("<font id='zectWasHere' size='1'> ZECTBynmo's <a target='_blank' href='https://github.com/ZECTBynmo/plugdat'><font color='red'>PlugDat</font></a> v0.0.1</font>");
+}
+
+
+PlugDat.prototype.setupAutoSkip = function() {
+	this.autoSkipTimer = setInterval( function() {
+		if( API.getUser() == API.getDJ() && API.getTimeRemaining() < 0 )
+			API.moderateForceSkip()
+	}, 2000);	
+}
+
+
+PlugDat.prototype.stopAutoSkip = function() {
+	// Stop our auto-woot timer if it exists
+	if( this.autoSkipTimer != undefined )
+		clearInterval( this.autoSkipTimer );
+}
+
+
+PlugDat.prototype.startAutoWoot = function() {
+	// Press the button immediately so the user can see the effects
+	$("#woot").click();
+
+	// Start a timer to press the button every 45 seconds
+	this.autoWootTimer = setInterval( function() {
+		$("#woot").click();
+	}, 45000);
+}
+
+
+PlugDat.prototype.stopAutoWoot = function() {
+	// Stop our auto-woot timer if it exists
+	if( this.autoWootTimer != undefined )
+		clearInterval( this.autoWootTimer );
+}
+
+
+PlugDat.prototype.cleanUp = function() {
+	console.log( "Cleaning up PlugDat" );
+
+	this.stopAutoWoot();
+	this.stopAutoSkip();
+
+	$("#zectWasHere").remove();
 }
 
 
@@ -103,34 +147,6 @@ PlugDat.prototype.setupChatHandlers = function() {
 		}
 	}
 }
-
-
-PlugDat.prototype.startAutoWoot = function() {
-	// Press the button immediately so the user can see the effects
-	$("#woot").click();
-
-	// Start a timer to press the button every 45 seconds
-	this.autoWootTimer = setInterval( function() {
-		$("#woot").click();
-	}, 45000);
-}
-
-
-PlugDat.prototype.stopAutoWoot = function() {
-	// Stop our auto-woot timer if it exists
-	if( this.autoWootTimer != undefined )
-		clearInterval( this.autoWootTimer );
-}
-
-
-PlugDat.prototype.cleanUp = function() {
-	console.log( "Cleaning up PlugDat" );
-
-	this.stopAutoWoot();
-
-	$("#zectWasHere").remove();
-}
-
 
 
 // -----------------------------------------------------------------
