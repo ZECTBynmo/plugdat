@@ -32,6 +32,7 @@ PlugDat.prototype.setupChatHandlers = function() {
 	        case '/hide':
 		        $("#playback").slideUp();
 		        break;
+		        
 
 			// ---------------------------
 			// Emojj
@@ -123,11 +124,13 @@ PlugDat.prototype.cleanUp = function() {
 
 
 
-// -----------------------------------------
+// -----------------------------------------------------------------
 // Create or destroy ourselves depending on the current situation
+// -----------------------------------------------------------------
 if( document.plugDat == undefined ) {
 	document.plugDat = new PlugDat();
 } else {
-	cleanUp();
+	document.PlugDat.cleanUp();
 	document.PlugDat = undefined;
 }
+// -----------------------------------------------------------------
