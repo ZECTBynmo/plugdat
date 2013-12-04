@@ -69,7 +69,7 @@ PlugDat.prototype.setupChatHandlers = function() {
 		for( var iCommand in commands ) {
 			if( value.message.indexOf(iCommand) != -1 ) {
 				if( typeof(commands[iCommand]) == "string" )
-					API.sendChat( commands[iCommand] );
+					value.message.replace( iCommand, commands[iCommand]);
 				else
 					commands[iCommand];
 			}
