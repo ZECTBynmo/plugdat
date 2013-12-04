@@ -63,4 +63,4 @@ API.on(API.CHAT_COMMAND, callback); function callback(value) {
 	}
 }
 
-$("#room-name").append(" Powered by <a href='https://github.com/ZECTBynmo/plugdat'>ZECTBynmo</a>");
+$("#room-name").append(" Powered by <a target='_blank' href='https://github.com/ZECTBynmo/plugdat'>ZECTBynmo</a>");
