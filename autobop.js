@@ -4,4 +4,4 @@ setInterval( function() {
 
 $("#woot").click();
 
-$("#room-name").append("ZECT's Autobop");
+$("#room-name").append(" ZECT's Autobop Enabled");
