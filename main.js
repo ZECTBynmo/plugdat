@@ -107,10 +107,13 @@ PlugDat.prototype.setupChatHandlers = function() {
 						thisHandler.isClear = false;
 						thisHandler.resetTimeout( thisHandler );
 
-						if( typeof(commands[iCommand]) == "string" )
+						if( typeof(commands[iCommand]) == "string" ) {
+							console.log( "Spitting out some ascii or something" );
 							API.sendChat( commands[iCommand] );
-						else
-							commands[iCommand];
+						} else {
+							console.log( "Calling handler function" );
+							commands[iCommand]();
+						}
 					}				
 				}
 			})(); // end anonymous function
