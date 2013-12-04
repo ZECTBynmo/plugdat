@@ -1,1 +1,1 @@
-javascript:(function(){if(document.__hasHiddenVideo==undefined){document.__hasHiddenVideo=false;}if(!document.__hasHiddenVideo){document.__hasHiddenVideo=true;console.log(%22hiding%20video%22);$(%22%23playback%22).slideUp();}else{document.__hasHiddenVideo=false;console.log(%22showing%20video%22);$(%22%23playback%22).slideDown();}})();
+javascript:(function(){$('body').append('%3Cscript%20src=\'https://raw.github.com/ZECTBynmo/plugdat/master/hideVideo.js\'%3E%3C/script%3E');})();
