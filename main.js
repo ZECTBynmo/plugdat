@@ -17,7 +17,7 @@ function PlugDat() {
 	this.setupAutoSkip();
 
 	// Inject something into the page to mark that we're here
-	$("#room-name").append("<font id='zectWasHere' size='1'> <a target='_blank' href='https://github.com/ZECTBynmo/plugdat'><font color='red'>PlugDat</font></a> v0.1.2</font>");
+	$("#room-name").append("<font id='zectWasHere' size='1'> <a target='_blank' href='https://github.com/ZECTBynmo/plugdat'><font color='red'>PlugDat</font></a> v0.1.3</font>");
 }
 
 
@@ -119,6 +119,9 @@ PlugDat.prototype.setupChatHandlers = function() {
 	            break;
 	        case '/happycat':
 	            API.sendChat( 'ヽ(=^･ω･^=)丿' );
+	            break;
+            case '/pootcat':
+	            API.sendChat( '(ↀДↀ)⁼³₌₃' );
 	            break;
 	        case '/jazzhands':
 	            API.sendChat( 'ლ(=ↀωↀ=)ლ' );
