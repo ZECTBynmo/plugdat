@@ -65,13 +65,30 @@ PlugDat.prototype.cleanUp = function() {
 
 
 PlugDat.prototype.setupChatHandlers = function() {
+	var _this = this;
+
+	if( this.justHandledTimers === undefined )
+		this.justHandledTimers = {};
+
 	API.on( API.CHAT_COMMAND, function(value) {
 		for( var iCommand in commands ) {
 			if( value.indexOf(iCommand) != -1 ) {
-				if( typeof(commands[iCommand]) == "string" )
-					API.sendChat( commands[iCommand] );
-				else
-					commands[iCommand];
+				// Create a new handler timer if we don't have one already
+				// This will set an all clear flag in two seconds to continue on with the command
+				_this.justHandledTimers[iCommand] = _this.justHandledTimers[iCommand] || {
+					isClear: false,
+					timeout: setTimeout( function() {
+						_this.justHandledTimers[iCommand].isClear = true;
+					}, 2000);
+				}
+
+				// Now, if we're clear to respond to the command, go for it
+				if( _this.justHandledTimers[iCommand].isClear ) {
+					if( typeof(commands[iCommand]) == "string" )
+						API.sendChat( commands[iCommand] );
+					else
+						commands[iCommand];
+				}				
 			}
 		}
 	});
