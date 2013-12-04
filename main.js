@@ -16,7 +16,7 @@ function PlugDat() {
 	this.setupChatHandlers();
 
 	// Inject something into the page to mark that we're here
-	$("#room-name").append("<font id='zectWasHere' size='1'> Powered by <a target='_blank' href='https://github.com/ZECTBynmo/plugdat'><font color='red'>ZECTBynmo</font></a> v0.0.1</font>");
+	$("#room-name").append("<font id='zectWasHere' size='1'> ZECTBynmo's <a target='_blank' href='https://github.com/ZECTBynmo/plugdat'><font color='red'>PlugDat</font></a> v0.0.1</font>");
 }
 
 
