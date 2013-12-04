@@ -1,0 +1,92 @@
+body {
+  background: #000 !important; }
+
+#chat, #user-lists, #waitlist {
+  height: 330px !important;
+  left: 0 !important;
+  top: 54px !important; }
+
+#user-lists .list {
+  height: 330px !important; }
+
+#chat-messages {
+  height: 230px !important; }
+
+#room {
+  display: none; }
+
+#playlist-button {
+  display: none !important; }
+
+#playlist-bar {
+  left: 0 !important; }
+
+#vote {
+  top: 330px !important;
+  left: 0 !important;
+  width: 100%; }
+  #vote .crowd-response {
+    height: 60px;
+    width: 33%; }
+  #vote .bottom {
+    top: auto;
+    bottom: 0; }
+
+#dialog-container {
+  width: 100% !important;
+  top: 0 !important;
+  left: 0 !important; }
+  #dialog-container #dialog-user-profile {
+    width: 100% !important;
+    top: 0 !important;
+    left: 0 !important; }
+    #dialog-container #dialog-user-profile .dialog-input-background {
+      width: 230px !important; }
+    #dialog-container #dialog-user-profile .dialog-menu-container-language {
+      top: 158px !important;
+      left: 40px !important; }
+
+#user-panel {
+  left: 110px !important; }
+  #user-panel .arrow-down {
+    display: none !important; }
+
+#footer {
+  top: 504px !important;
+  width: 345px !important; }
+  #footer #user-meta {
+    top: 54px !important; }
+  #footer #playlist-meta {
+    width: auto !important; }
+  #footer #next-media-title, #footer #next-media-label {
+    width: 300px !important; }
+    #footer #next-media-title .bar-value, #footer #next-media-label .bar-value {
+      font-size: 10px !important; }
+
+#header {
+  width: 345px !important;
+  height: 54px !important; }
+
+#store {
+  width: 85% !important; }
+
+#store-button {
+  width: 15% !important; }
+  #store-button .back {
+    width: 15% !important; }
+    #store-button .back .icon {
+      left: 12px !important;
+      top: 13px !important; }
+  #store-button.back span {
+    display: none; }
+
+.user-panel-modal {
+  width: 100% !important; }
+
+#dj-button {
+  top: 390px !important;
+  width: 100%;
+  left: 0 !important; }
+
+#room-meta {
+  display: none; }

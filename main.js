@@ -6,7 +6,7 @@
 /* ----------------------------------------------------------------------
 													Object Structures
 -------------------------------------------------------------------------
-	
+
 */
 //////////////////////////////////////////////////////////////////////////
 // Constructor
@@ -16,7 +16,7 @@ function PlugDat() {
 	this.setupChatHandlers();
 
 	// Inject something into the page to mark that we're here
-	$("#room-name").append("<font id='zectWasHere' size='1'> Powered by <a target='_blank' href='https://github.com/ZECTBynmo/plugdat'><font color='red'>ZECTBynmo</font></a> v0.0.1</font>");
+	$('#room-name').append('<font id="zectWasHere" size="1"> Powered by <a target="_blank" href="https://github.com/ZECTBynmo/plugdat"><font color="red">ZECTBynmo</font></a> v0.0.1</font>');
 }
 
 
@@ -27,21 +27,35 @@ PlugDat.prototype.setupChatHandlers = function() {
 			// function commands
 			// ---------------------------
 			case '/show':
-		        $("#playback").slideDown();
+		        $('#playback').css('visibility', 'visible');
+		        $('#yt-frame').css('height', '100%');
 		        break;
 	        case '/hide':
-		        $("#playback").slideUp();
+		        $('#playback').css('visibility', 'hidden');
+		        $('#yt-frame').css('height', '0');
 		        break;
 	        case '/hideall':
-	       	 	$("#playback").slideUp();
-		        $("#audience").hide()
-		        $("#dj-booth").hide()
+	       	 	$('#playback').css('visibility', 'hidden');
+		        $('#yt-frame').css('height', '0');
+		        $('#audience').hide();
+		        $('#dj-booth').hide();
 		        break;
 	        case '/showall':
-	       	 	$("#playback").slideDown();
-		        $("#audience").show()
-		        $("#dj-booth").show()
+	       	 	$('#playback').css('visibility', 'visible');
+		        $('#yt-frame').css('height', '100%');
+		        $('#audience').show();
+		        $('#dj-booth').show();
 		        break;
+		    case '/stealth':
+			    $('link[rel=stylesheet][href~="http://localhost"]').remove();
+		    	$('head').append('<link rel="stylesheet" type="text/css" href="https://raw.github.com/ZECTBynmo/plugdat/stealthmode/stealth.css">')
+		    	// $('head').append('<link rel="stylesheet" type="text/css" href="http://localhost/plugdat/stealth.css">');
+		    	var vote = $('#vote');
+		    	var djButton = $('#dj-button');
+		    	vote.appendTo('#chat');
+		    	djButton.appendTo('#chat');
+		    	break;
+
 
 			// ---------------------------
 			// Emojj
@@ -107,11 +121,11 @@ PlugDat.prototype.setupChatHandlers = function() {
 
 PlugDat.prototype.startAutoWoot = function() {
 	// Press the button immediately so the user can see the effects
-	$("#woot").click();
+	$('#woot').click();
 
 	// Start a timer to press the button every 45 seconds
 	this.autoWootTimer = setInterval( function() {
-		$("#woot").click();
+		$('#woot').click();
 	}, 45000);
 }
 
@@ -124,11 +138,11 @@ PlugDat.prototype.stopAutoWoot = function() {
 
 
 PlugDat.prototype.cleanUp = function() {
-	console.log( "Cleaning up PlugDat" );
+	console.log( 'Cleaning up PlugDat' );
 
 	this.stopAutoWoot();
 
-	$("#zectWasHere").remove();
+	$('#zectWasHere').remove();
 }
 
 
@@ -137,10 +151,10 @@ PlugDat.prototype.cleanUp = function() {
 // Create or destroy ourselves depending on the current situation
 // -----------------------------------------------------------------
 if( document.PlugDat === undefined ) {
-	console.log( "Creating PlugDat" );
+	console.log( 'Creating PlugDat' );
 	document.PlugDat = new PlugDat();
 } else {
-	console.log( "Destroying PlugDat" );
+	console.log( 'Destroying PlugDat' );
 	document.PlugDat.cleanUp();
 	document.PlugDat = undefined;
 }
