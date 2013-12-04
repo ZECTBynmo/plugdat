@@ -67,6 +67,7 @@ PlugDat.prototype.cleanUp = function() {
 PlugDat.prototype.setupChatHandlers = function() {
 	API.on( API.CHAT, function(value) {
 		for( var iCommand in commands ) {
+			console.log( value )
 			if( value.indexOf(iCommand) != -1 ) {
 				if( typeof(commands[iCommand]) == "string" )
 					API.sendChat( commands[iCommand] );
