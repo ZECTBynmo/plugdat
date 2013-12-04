@@ -77,9 +77,9 @@ PlugDat.prototype.setupChatHandlers = function() {
 				// This will set an all clear flag in two seconds to continue on with the command
 				_this.justHandledTimers[iCommand] = _this.justHandledTimers[iCommand] || {
 					isClear: true,
-					resetTimeout: function() { 
+					resetTimeout: function( self ) { 
 						setTimeout( function() {
-							_this.justHandledTimers[iCommand].isClear = true;
+							self.justHandledTimers[iCommand].isClear = true;
 						}, 2000);
 					}
 				}
@@ -88,7 +88,7 @@ PlugDat.prototype.setupChatHandlers = function() {
 				if( _this.justHandledTimers[iCommand].isClear ) {
 					// Start the timer so we don't accidentally launch a second one immediately
 					_this.justHandledTimers[iCommand].isClear = false;
-					_this.justHandledTimers[iCommand].resetTimeout();
+					_this.justHandledTimers[iCommand].resetTimeout( _this );
 
 					if( typeof(commands[iCommand]) == "string" )
 						API.sendChat( commands[iCommand] );
