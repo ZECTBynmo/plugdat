@@ -56,3 +56,5 @@ API.on(API.CHAT_COMMAND, callback); function callback(value) {
             break;
 	}
 }
+
+$("#room-name").append(" ZECT's Emoji Enabled");
