@@ -13,3 +13,5 @@ When you enable the script, a few things happen automatically
 - You get a few new abilities
   - "/hide" - hides the video (and mutes everything in Firefox)
   - "/show" - show's the video
+  - "/hideall" - hide the video and all animations
+  - "/showall" - show the video and all animations
