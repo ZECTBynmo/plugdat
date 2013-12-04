@@ -72,30 +72,34 @@ PlugDat.prototype.setupChatHandlers = function() {
 
 	API.on( API.CHAT_COMMAND, function(value) {
 		for( var iCommand in commands ) {
-			if( value.indexOf(iCommand) != -1 ) {
-				// Create a new handler timer if we don't have one already
-				// This will set an all clear flag in two seconds to continue on with the command
-				_this.justHandledTimers[iCommand] = _this.justHandledTimers[iCommand] || {
-					isClear: true,
-					resetTimeout: function( self ) { 
-						setTimeout( function() {
-							self.justHandledTimers[iCommand].isClear = true;
-						}, 2000);
+			(function(){
+				if( value.indexOf(iCommand) != -1 ) {
+					// Create a new handler timer if we don't have one already
+					// This will set an all clear flag in two seconds to continue on with the command
+					_this.justHandledTimers[iCommand] = _this.justHandledTimers[iCommand] || {
+						isClear: true,
+						resetTimeout: function( self ) { 
+							setTimeout( function() {
+								console.log( self.justHandledTimers );
+								console.log( iCommand );
+								self.justHandledTimers[iCommand].isClear = true;
+							}, 2000);
+						}
 					}
+
+					// Now, if we're clear to respond to the command, go for it
+					if( _this.justHandledTimers[iCommand].isClear ) {
+						// Start the timer so we don't accidentally launch a second one immediately
+						_this.justHandledTimers[iCommand].isClear = false;
+						_this.justHandledTimers[iCommand].resetTimeout( _this );
+
+						if( typeof(commands[iCommand]) == "string" )
+							API.sendChat( commands[iCommand] );
+						else
+							commands[iCommand];
+					}				
 				}
-
-				// Now, if we're clear to respond to the command, go for it
-				if( _this.justHandledTimers[iCommand].isClear ) {
-					// Start the timer so we don't accidentally launch a second one immediately
-					_this.justHandledTimers[iCommand].isClear = false;
-					_this.justHandledTimers[iCommand].resetTimeout( _this );
-
-					if( typeof(commands[iCommand]) == "string" )
-						API.sendChat( commands[iCommand] );
-					else
-						commands[iCommand];
-				}				
-			}
+			})();
 		}
 	});
 }
