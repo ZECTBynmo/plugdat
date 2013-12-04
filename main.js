@@ -17,7 +17,7 @@ function PlugDat() {
 	this.setupAutoSkip();
 
 	// Inject something into the page to mark that we're here
-	$("#room-name").append("<font id='zectWasHere' size='1'> ZECTBynmo's <a target='_blank' href='https://github.com/ZECTBynmo/plugdat'><font color='red'>PlugDat</font></a> v0.1.1</font>");
+	$("#room-name").append("<font id='zectWasHere' size='1'> ZECTBynmo's <a target='_blank' href='https://github.com/ZECTBynmo/plugdat'><font color='red'>PlugDat</font></a> v0.1.2</font>");
 }
 
 
@@ -25,7 +25,7 @@ PlugDat.prototype.setupAutoSkip = function() {
 	this.autoSkipTimer = setInterval( function() {
 		if( API.getTimeRemaining() < 0 )
 			API.moderateForceSkip()
-	}, 10000);	
+	}, 5000);	
 }
 
 
