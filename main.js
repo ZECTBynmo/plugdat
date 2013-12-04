@@ -12,8 +12,8 @@
 // Constructor
 function PlugDat() {
 	// Setup various components
-	startAutoWoot();
-	setupEmojj();
+	this.startAutoWoot();
+	this.setupEmojj();
 
 	// Inject something into the page to mark that we're here
 	$("#room-name").append("<font id='zectWasHere' size='1'> Powered by <a target='_blank' href='https://github.com/ZECTBynmo/plugdat'><font color='red'>ZECTBynmo</font></a></font>");
@@ -101,6 +101,8 @@ PlugDat.prototype.stopAutoWoot = function() {
 
 
 PlugDat.prototype.cleanUp = function() {
+	console.log( "Cleaning up PlugDat" );
+
 	this.stopAutoWoot();
 
 	$("#room-name .zectWasHere").remove();
