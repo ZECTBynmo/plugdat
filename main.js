@@ -32,7 +32,16 @@ PlugDat.prototype.setupChatHandlers = function() {
 	        case '/hide':
 		        $("#playback").slideUp();
 		        break;
-
+	        case '/hideall':
+	       	 	$("#playback").slideUp();
+		        $("#audience").hide()
+		        $("#dj-booth").hide()
+		        break;
+	        case '/showall':
+	       	 	$("#playback").slideDown();
+		        $("#audience").show()
+		        $("#dj-booth").show()
+		        break;
 
 			// ---------------------------
 			// Emojj
