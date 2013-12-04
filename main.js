@@ -112,7 +112,7 @@ PlugDat.prototype.cleanUp = function() {
 // Create or destroy ourselves depending on the current situation
 if( document.plugDat == undefined ) {
 	document.plugDat = new PlugDat();
-} else( document.plugDat != undefined ) {
+} else {
 	cleanUp();
 	document.PlugDat = undefined;
 }
