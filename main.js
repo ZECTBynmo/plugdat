@@ -59,7 +59,9 @@ PlugDat.prototype.cleanUp = function() {
 
 	this.stopAutoWoot();
 	this.stopAutoSkip();
-
+	
+	this.isDisabled = true;
+	
 	$("#zectWasHere").remove();
 }
 
@@ -71,27 +73,39 @@ PlugDat.prototype.setupChatHandlers = function() {
 		this.justHandledTimers = {};
 
 	API.on( API.CHAT_COMMAND, function(value) {
+		// If we're disabled, that means this is a callback sitting around from
+		// who knows when. Just do nothing.
+		if( _this.isDisabled )
+			return;
+
+		// Look through each command
 		for( var iCommand in commands ) {
+
+			// Create a new handler timer if we don't have one already
+			// This will set an all clear flag in two seconds to continue on with the command
+			_this.justHandledTimers[iCommand] = _this.justHandledTimers[iCommand] || {
+				isClear: true,
+				resetTimeout: function( handler ) { 
+					setTimeout( function() {
+						handler.isClear = true;
+					}, 2000);
+				}
+			};
+
+			// Create a closure so that we can preserve variables while we loop
 			(function(){
+
+				// Preserve this template for closure
+				var thisHandler = _this.justHandledTimers[iCommand];
+
+				// If this command contains a keyword, go forward
 				if( value.indexOf(iCommand) != -1 ) {
-					// Create a new handler timer if we don't have one already
-					// This will set an all clear flag in two seconds to continue on with the command
-					_this.justHandledTimers[iCommand] = _this.justHandledTimers[iCommand] || {
-						isClear: true,
-						resetTimeout: function( self ) { 
-							setTimeout( function() {
-								console.log( self.justHandledTimers );
-								console.log( iCommand );
-								self.justHandledTimers[iCommand].isClear = true;
-							}, 2000);
-						}
-					}
 
 					// Now, if we're clear to respond to the command, go for it
-					if( _this.justHandledTimers[iCommand].isClear ) {
+					if( thisHandler.isClear ) {
 						// Start the timer so we don't accidentally launch a second one immediately
-						_this.justHandledTimers[iCommand].isClear = false;
-						_this.justHandledTimers[iCommand].resetTimeout( _this );
+						thisHandler.isClear = false;
+						thisHandler.resetTimeout( thisHandler );
 
 						if( typeof(commands[iCommand]) == "string" )
 							API.sendChat( commands[iCommand] );
@@ -99,10 +113,10 @@ PlugDat.prototype.setupChatHandlers = function() {
 							commands[iCommand];
 					}				
 				}
-			})();
-		}
-	});
-}
+			})(); // end anonymous function
+		} // end for each command
+	}); // end API.on( API.CHAT_COMMAND )
+} // end setupChatHandlers()
 
 console.log( commands );
 var commands = {
