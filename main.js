@@ -128,8 +128,10 @@ PlugDat.prototype.cleanUp = function() {
 // Create or destroy ourselves depending on the current situation
 // -----------------------------------------------------------------
 if( document.plugDat === undefined ) {
+	console.log( "Creating PlugDat" );
 	document.plugDat = new PlugDat();
 } else {
+	console.log( "Destroying PlugDat" );
 	document.PlugDat.cleanUp();
 	document.PlugDat = undefined;
 }
