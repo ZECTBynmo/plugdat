@@ -17,7 +17,7 @@ function PlugDat() {
 	this.setupAutoSkip();
 
 	// Inject something into the page to mark that we're here
-	$("#room-name").append("<font id='zectWasHere' size='1'> <a target='_blank' href='https://github.com/ZECTBynmo/plugdat'><font color='red'>PlugDat</font></a> v0.2.2</font>");
+	$("#room-name").append("<font id='zectWasHere' size='1'> <a target='_blank' href='https://github.com/ZECTBynmo/plugdat'><font color='red'>PlugDat</font></a> v0.2.0</font>");
 }
 
 
@@ -65,11 +65,11 @@ PlugDat.prototype.cleanUp = function() {
 
 
 PlugDat.prototype.setupChatHandlers = function() {
-	API.on( API.CHAT_COMMAND, function(value) {
+	API.on( API.CHAT, function(value) {
 		for( var iCommand in commands ) {
 			if( value.indexOf(iCommand) != -1 ) {
 				if( typeof(commands[iCommand]) == "string" )
-					value.message.replace( iCommand, commands[iCommand]);
+					API.sendChat( commands[iCommand] );
 				else
 					commands[iCommand];
 			}
