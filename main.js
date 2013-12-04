@@ -13,16 +13,29 @@
 function PlugDat() {
 	// Setup various components
 	this.startAutoWoot();
-	this.setupEmojj();
+	this.setupChatHandlers();
 
 	// Inject something into the page to mark that we're here
 	$("#room-name").append("<font id='zectWasHere' size='1'> Powered by <a target='_blank' href='https://github.com/ZECTBynmo/plugdat'><font color='red'>ZECTBynmo</font></a></font>");
 }
 
 
-PlugDat.prototype.setupEmojj = function() {
+PlugDat.prototype.setupChatHandlers = function() {
 	API.on(API.CHAT_COMMAND, callback); function callback(value) {
 		switch( value ) {
+			// ---------------------------
+			// function commands
+			// ---------------------------
+			case '/show':
+		        $("#playback").slideDown();
+		        break;
+	        case '/hide':
+		        $("#playback").slideUp();
+		        break;
+
+			// ---------------------------
+			// Emojj
+			// ---------------------------
 		    case '/whatever':
 		        API.sendChat( '¯\\_(ツ)_/¯' );
 		        break;
