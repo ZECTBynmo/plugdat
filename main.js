@@ -47,7 +47,7 @@ PlugDat.prototype.setupChatHandlers = function() {
 		        $('#dj-booth').show();
 		        break;
 		    case '/stealth':
-			    $('link[rel=stylesheet][href~="http://localhost"]').remove();
+			    $('link[rel=stylesheet][href~="https://raw.github"]').remove();
 		    	$('head').append('<link rel="stylesheet" type="text/css" href="https://raw.github.com/ZECTBynmo/plugdat/stealthmode/stealth.css">')
 		    	// $('head').append('<link rel="stylesheet" type="text/css" href="http://localhost/plugdat/stealth.css">');
 		    	var vote = $('#vote');
