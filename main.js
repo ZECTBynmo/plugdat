@@ -32,7 +32,7 @@ PlugDat.prototype.setupChatHandlers = function() {
 	        case '/hide':
 		        $("#playback").slideUp();
 		        break;
-		        
+
 
 			// ---------------------------
 			// Emojj
@@ -44,7 +44,7 @@ PlugDat.prototype.setupChatHandlers = function() {
 		        API.sendChat( '(╯°□°）╯︵ ┻━┻' );
 		        break;
 	        case '/tablefix':
-		        API.sendChat( 'ノ( º _ ºノ)' );
+		        API.sendChat( '\┬\─\┬﻿ ノ( ゜-゜ノ)' );
 		        break;
 	        case '/seriousface':
 	        	API.sendChat( 'ಠ_ಠ' );
