@@ -23,9 +23,9 @@ function PlugDat() {
 
 PlugDat.prototype.setupAutoSkip = function() {
 	this.autoSkipTimer = setInterval( function() {
-		if( API.getUser() == API.getDJ() && API.getTimeRemaining() < 0 )
+		if( API.getTimeRemaining() < 0 )
 			API.moderateForceSkip()
-	}, 2000);	
+	}, 10000);	
 }
 
 
