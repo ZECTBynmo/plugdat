@@ -10,6 +10,7 @@ When you enable the script, a few things happen automatically
 
 - Autowoot is enabled
 - Turntable.fm emojj's are enabled
+- If you sit on deck after your song is done, you will be auto-skipped
 - You get a few new abilities
   - "/hide" - hides the video (and mutes everything in Firefox)
   - "/show" - show's the video
