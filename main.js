@@ -133,6 +133,7 @@ if( document.plugDat === undefined ) {
 } else {
 	console.log( "Destroying PlugDat" );
 	document.PlugDat.cleanUp();
-	document.PlugDat = undefined;
+	
+	//document.PlugDat = undefined;
 }
 // -----------------------------------------------------------------
