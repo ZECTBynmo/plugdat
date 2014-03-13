@@ -29,11 +29,11 @@ function PlugDat() {
 PlugDat.prototype.setupChatHistory = function() {
 	var _this = this;
 
-	function updateChatFromHistory() {
+	var updateChatFromHistory = function() {
 		$('#chat-input-field').val( _this.chatHistory[_this.iCurrentHistoryItem] );
-	}
+	};
 
-	​$('#chat-input-field').keyup(function(event){
+	​$('#chat-input-field').keyup( function(event) {
 	    if( _this.isDisabled )
 			return;
 
