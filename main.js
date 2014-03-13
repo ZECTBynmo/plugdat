@@ -33,7 +33,7 @@ PlugDat.prototype.setupChatHistory = function() {
 		$('#chat-input-field').val( _this.chatHistory[_this.iCurrentHistoryItem] );
 	};
 
-	​$("#chat-input-field").keyup( function(event) {
+	$("#chat-input-field").keyup( function(event) {
 	    if( _this.isDisabled )
 			return;
 
