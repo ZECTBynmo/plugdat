@@ -41,8 +41,12 @@ PlugDat.prototype.setupChatHistory = function() {
 		if( _this.isDisabled )
 			return true;
 
-		if( _this.iCurrentHistoryItem < _this.chatHistory.length ) {
-			_this.iCurrentHistoryItem = event.keyCode == 38 ? _this.iCurrentHistoryItem - 1 : _this.iCurrentHistoryItem + 1;
+		if( event.keyCode == 38 && _this.iCurrentHistoryItem > 0) {
+			_this.iCurrentHistoryItem -= 1;
+		}
+
+		if( event.keyCode == 40 && _this.iCurrentHistoryItem < _this.chatHistory.length ) {
+			_this.iCurrentHistoryItem += 1;
 		}
 
 		updateChatFromHistory();
