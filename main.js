@@ -35,19 +35,17 @@ PlugDat.prototype.setupChatHistory = function() {
 
 	$("#chat-input-field").keydown(function(event){
 		// We only care about up and down key presses
-		if( event.keyCode == 38 || event.keyCode == 40 ) {
+		if( event.keyCode != 38 && event.keyCode != 40 )
+			return;
 
-			if( _this.isDisabled )
-				return true;
+		if( _this.isDisabled )
+			return true;
 
-			if( _this.iCurrentHistoryItem < _this.chatHistory.length ) {
-				_this.iCurrentHistoryItem = event.keyCode == 38 ? _this.iCurrentHistoryItem - 1 : _this.iCurrentHistoryItem + 1;
-			}
-
-			updateChatFromHistory();
+		if( _this.iCurrentHistoryItem < _this.chatHistory.length ) {
+			_this.iCurrentHistoryItem = event.keyCode == 38 ? _this.iCurrentHistoryItem - 1 : _this.iCurrentHistoryItem + 1;
 		}
 
-		event.preventDefault();
+		updateChatFromHistory();
 	});
 }
 
