@@ -37,7 +37,7 @@ PlugDat.prototype.setupChatHistory = function() {
 		// We only care about up and down key presses
 		if( event.keyCode == 38 || event.keyCode == 40 ) {
 
-		    if( _this.isDisabled )
+			if( _this.isDisabled )
 				return true;
 
 			if( _this.iCurrentHistoryItem < _this.chatHistory.length ) {
@@ -47,7 +47,7 @@ PlugDat.prototype.setupChatHistory = function() {
 			updateChatFromHistory();
 		}
 
-		return true;
+		event.preventDefault();
 	});
 }
 
