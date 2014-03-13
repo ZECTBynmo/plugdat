@@ -112,7 +112,7 @@ PlugDat.prototype.setupChatHandlers = function() {
 		if( _this.isDisabled )
 			return;
 
-		_this.chatHistory.push( value );
+		_this.chatHistory.push( value.message );
 		_this.iCurrentHistoryItem = _this.chatHistory.length;
 	});
 	
