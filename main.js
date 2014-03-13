@@ -47,7 +47,7 @@ PlugDat.prototype.setupChatHistory = function() {
 	    if( _this.isDisabled )
 			return;
 
-		if( _this.iCurrentHistoryItem < this.chatHistory.length )
+		if( _this.iCurrentHistoryItem < _this.chatHistory.length )
 			_this.iCurrentHistoryItem += 1;
 
 		updateChatFromHistory();
