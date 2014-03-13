@@ -51,7 +51,7 @@ PlugDat.prototype.setupChatHistory = function() {
 			_this.iCurrentHistoryItem += 1;
 
 		updateChatFromHistory();
-	});​​​​​​
+	});
 }
 
 
