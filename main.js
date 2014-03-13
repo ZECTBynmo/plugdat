@@ -166,10 +166,6 @@ PlugDat.prototype.setupChatHandlers = function() {
 } // end setupChatHandlers()
 
 
-javascript: (function () {
-	document.body.style.backgroundImage = 'url(' + url + ')';
-}());
-
 var commands = {
 	"/show": function() {
 		$("#playback").slideDown();
