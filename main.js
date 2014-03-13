@@ -108,7 +108,7 @@ PlugDat.prototype.setupChatHandlers = function() {
 	API.on( API.CHAT, function(value) {
 		// If we're disabled, that means this is a callback sitting around from
 		// who knows when. Just do nothing.
-		if( _this.isDisabled )
+		if( _this.isDisabled || value.fromID == API.getUser() )
 			return;
 
 		_this.chatHistory.push( value.message );
