@@ -42,7 +42,7 @@ PlugDat.prototype.setupChatHistory = function() {
 
 		updateChatFromHistory();
 	});
-	
+
 	$("#chat-input-field").keydown(function(event){
 	    if( _this.isDisabled )
 			return;
@@ -114,7 +114,7 @@ PlugDat.prototype.setupChatHandlers = function() {
 
 		_this.chatHistory.push( value );
 		_this.iCurrentHistoryItem = _this.chatHistory.length;
-	}
+	});
 	
 
 	API.on( API.CHAT_COMMAND, function(value) {
