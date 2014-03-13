@@ -41,8 +41,8 @@ PlugDat.prototype.setupChatHistory = function() {
 			_this.iCurrentHistoryItem -= 1;
 
 		updateChatFromHistory();
-	});​​​​​​
-
+	});
+	
 	$("#chat-input-field").keydown(function(event){
 	    if( _this.isDisabled )
 			return;
