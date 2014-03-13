@@ -11,13 +11,47 @@
 //////////////////////////////////////////////////////////////////////////
 // Constructor
 function PlugDat() {
+	// Some member variables
+	this.chatHistory = [];
+	this.iCurrentHistoryItem = 0;
+
 	// Setup various components
 	this.startAutoWoot();
 	this.setupChatHandlers();
 	this.setupAutoSkip();
+	this.setupChatHistory();
 
 	// Inject something into the page to mark that we're here
-	$("#room-name").append("<font id='zectWasHere' size='1'> <a target='_blank' href='https://github.com/ZECTBynmo/plugdat'><font color='red'>PlugDat</font></a> v0.2.5</font>");
+	$("#room-name").append("<font id='zectWasHere' size='1'> <a target='_blank' href='https://github.com/ZECTBynmo/plugdat'><font color='red'>PlugDat</font></a> v0.2.6</font>");
+}
+
+
+PlugDat.prototype.setupChatHistory = function() {
+	var _this = this;
+
+	function updateChatFromHistory() {
+		$('#chat-input-field').val( _this.chatHistory[_this.iCurrentHistoryItem] );
+	}
+
+	​$('#chat-input-field').keyup(function(event){
+	    if( _this.isDisabled )
+			return;
+
+		if( _this.iCurrentHistoryItem > 0 )
+			_this.iCurrentHistoryItem -= 1;
+
+		updateChatFromHistory();
+	});​​​​​​
+
+	$('#chat-input-field').keydown(function(event){
+	    if( _this.isDisabled )
+			return;
+
+		if( _this.iCurrentHistoryItem < this.chatHistory.length )
+			_this.iCurrentHistoryItem += 1;
+
+		updateChatFromHistory();
+	});​​​​​​
 }
 
 
@@ -72,6 +106,17 @@ PlugDat.prototype.setupChatHandlers = function() {
 	if( this.justHandledTimers === undefined )
 		this.justHandledTimers = {};
 
+	API.on( API.CHAT, function(value) {
+		// If we're disabled, that means this is a callback sitting around from
+		// who knows when. Just do nothing.
+		if( _this.isDisabled )
+			return;
+
+		_this.chatHistory.push( value );
+		_this.iCurrentHistoryItem = _this.chatHistory.length;
+	}
+	
+
 	API.on( API.CHAT_COMMAND, function(value) {
 		// If we're disabled, that means this is a callback sitting around from
 		// who knows when. Just do nothing.
@@ -121,7 +166,7 @@ PlugDat.prototype.setupChatHandlers = function() {
 	}); // end API.on( API.CHAT_COMMAND )
 } // end setupChatHandlers()
 
-console.log( commands );
+
 var commands = {
 	"/show": function() {
 		$("#playback").slideDown();
@@ -156,7 +201,7 @@ var commands = {
 	"/snowman": 			"⁝⁝⸃₍⁽΄˙̥΄ ⁾₎⸜☂",
 	"/wizard": 				"(∩｀-´)⊃━☆ﾟ.*･｡ﾟ",
 	"/raiseyourdongers": 	"ヽ༼ ಠ益ಠ ༽ﾉ",
-	"/fuckyou": 			"凸ಠ益ಠ)凸",
+	"/fuckyou": 			"凸(ಠ益ಠ)凸",
 };
 
 
