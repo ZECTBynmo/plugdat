@@ -22,7 +22,7 @@ function PlugDat() {
 	this.setupChatHistory();
 
 	// Inject something into the page to mark that we're here
-	$("#room-name").append("<font id='zectWasHere' size='1'> <a target='_blank' href='https://github.com/ZECTBynmo/plugdat'><font color='red'>PlugDat</font></a> v0.2.6</font>");
+	$("#room-name").append("<font id='zectWasHere' size='1'> <a target='_blank' href='https://github.com/ZECTBynmo/plugdat'><font color='red'>PlugDat</font></a> v0.3.0</font>");
 }
 
 
@@ -156,7 +156,7 @@ PlugDat.prototype.setupChatHandlers = function() {
 							API.sendChat( commands[iCommand] );
 						} else {
 							console.log( "Calling handler function" );
-							commands[iCommand]();
+							commands[iCommand]( value );
 						}
 					}				
 				}
@@ -165,6 +165,10 @@ PlugDat.prototype.setupChatHandlers = function() {
 	}); // end API.on( API.CHAT_COMMAND )
 } // end setupChatHandlers()
 
+
+javascript: (function () {
+	document.body.style.backgroundImage = 'url(' + url + ')';
+}());
 
 var commands = {
 	"/show": function() {
@@ -182,6 +186,10 @@ var commands = {
 		$("#playback").slideDown();
         $("#audience").show()
         $("#dj-booth").show()
+	},
+	"/bg": function( command ) {
+		var url = command.split(" ")[1];
+		document.body.style.backgroundImage = 'url(' + url + ')';
 	},
 	"/whatever": 			"¯\\_(ツ)_/¯",
 	"/tableflip": 			"(╯°□°）╯︵ ┻━┻",
