@@ -33,24 +33,21 @@ PlugDat.prototype.setupChatHistory = function() {
 		$('#chat-input-field').val( _this.chatHistory[_this.iCurrentHistoryItem] );
 	};
 
-	$("#chat-input-field").keyup( function(event) {
-	    if( _this.isDisabled )
-			return;
-
-		if( _this.iCurrentHistoryItem > 0 )
-			_this.iCurrentHistoryItem -= 1;
-
-		updateChatFromHistory();
-	});
-
 	$("#chat-input-field").keydown(function(event){
-	    if( _this.isDisabled )
-			return;
+		// We only care about up and down key presses
+		if( event.keyCode == 38 || event.keyCode == 40 ) {
 
-		if( _this.iCurrentHistoryItem < _this.chatHistory.length )
-			_this.iCurrentHistoryItem += 1;
+		    if( _this.isDisabled )
+				return false;
 
-		updateChatFromHistory();
+			if( _this.iCurrentHistoryItem < _this.chatHistory.length ) {
+				_this.iCurrentHistoryItem = event.keyCode == 38 ? _this.iCurrentHistoryItem - 1 : _this.iCurrentHistoryItem + 1;
+			}
+
+			updateChatFromHistory();
+		}
+
+		return false;
 	});
 }
 
