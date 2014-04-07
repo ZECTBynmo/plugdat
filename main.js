@@ -22,7 +22,7 @@ function PlugDat() {
 	this.setupChatHistory();
 
 	// Inject something into the page to mark that we're here
-	$("#room-name").append("<font id='zectWasHere' size='1'> <a target='_blank' href='https://github.com/ZECTBynmo/plugdat'><font color='red'>PlugDat</font></a> v0.3.1</font>");
+	$("#room-name").append("<font id='zectWasHere' size='1'> <a target='_blank' href='https://github.com/ZECTBynmo/plugdat'><font color='red'>PlugDat</font></a> v0.3.2</font>");
 }
 
 
@@ -188,6 +188,8 @@ var commands = {
 
 		if( url == "pdnb" )
 			document.body.style.backgroundImage = 'url("http://i.imgur.com/WrZcAT7.jpg")';
+		else if( url == "tt" || url == "TT" )
+			document.body.style.backgroundImage = 'url("http://i.imgur.com/wDMYMlQ.png")';
 		else {
 			document.body.style.backgroundImage = 'url(' + url + ')';
 		}		
