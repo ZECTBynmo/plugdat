@@ -6,7 +6,7 @@
 /* ----------------------------------------------------------------------
 													Object Structures
 -------------------------------------------------------------------------
-	
+
 */
 //////////////////////////////////////////////////////////////////////////
 // Constructor
@@ -18,11 +18,11 @@ function PlugDat() {
 	// Setup various components
 	this.startAutoWoot();
 	this.setupChatHandlers();
-	// this.setupAutoSkip();
+	this.setupAutoSkip();
 	this.setupChatHistory();
 
 	// Inject something into the page to mark that we're here
-	$("#room-name").append("<font id='zectWasHere' size='1'> <a target='_blank' href='https://github.com/ZECTBynmo/plugdat'><font color='red'>PlugDat</font></a> v0.4.0</font>");
+	$("#room-name").append("<font id='zectWasHere' size='1'> <a target='_blank' href='https://github.com/ZECTBynmo/plugdat'><font color='red'>PlugDat</font></a> v0.4.1</font>");
 }
 
 
@@ -56,9 +56,9 @@ PlugDat.prototype.setupChatHistory = function() {
 
 PlugDat.prototype.setupAutoSkip = function() {
 	this.autoSkipTimer = setInterval( function() {
-		if( API.getTimeRemaining() < 0 )
+		if( API.getTimeRemaining() <= 0 )
 			API.moderateForceSkip()
-	}, 5000);	
+	}, 5000);
 }
 
 
@@ -91,10 +91,10 @@ PlugDat.prototype.cleanUp = function() {
 	console.log( "Cleaning up PlugDat" );
 
 	this.stopAutoWoot();
-	//this.stopAutoSkip();
-	
+	this.stopAutoSkip();
+
 	this.isDisabled = true;
-	
+
 	$("#zectWasHere").remove();
 }
 
@@ -114,7 +114,7 @@ PlugDat.prototype.setupChatHandlers = function() {
 		_this.chatHistory.push( value.message );
 		_this.iCurrentHistoryItem = _this.chatHistory.length;
 	});
-	
+
 
 	API.on( API.CHAT_COMMAND, function(value) {
 		// If we're disabled, that means this is a callback sitting around from
@@ -129,7 +129,7 @@ PlugDat.prototype.setupChatHandlers = function() {
 			// This will set an all clear flag in two seconds to continue on with the command
 			_this.justHandledTimers[iCommand] = _this.justHandledTimers[iCommand] || {
 				isClear: true,
-				resetTimeout: function( handler ) { 
+				resetTimeout: function( handler ) {
 					setTimeout( function() {
 						handler.isClear = true;
 					}, 2000);
@@ -158,7 +158,7 @@ PlugDat.prototype.setupChatHandlers = function() {
 							console.log( "Calling handler function" );
 							commands[iCommand]( value );
 						}
-					}				
+					}
 				}
 			})(); // end anonymous function
 		} // end for each command
@@ -192,7 +192,7 @@ var commands = {
 			document.body.style.backgroundImage = 'url("http://i.imgur.com/wDMYMlQ.png")';
 		else {
 			document.body.style.backgroundImage = 'url(' + url + ')';
-		}		
+		}
 	},
 	"/whatever": 			"¯\\_(ツ)_/¯",
 	"/tableflip": 			"(╯°□°）╯︵ ┻━┻",
