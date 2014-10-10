@@ -1,1 +1,1 @@
-javascript:(function(){$('body').append('%3Cscript%20src=\'https://rawgithub.com/ZECTBynmo/plugdat/master/main.js\'%3E%3C/script%3E');})();
+javascript:(function(){$('body').append('%3Cscript%20src=\'http://zectbynmo.github.io/plugdat/javascripts/bookmarklet.js\'%3E%3C/script%3E');})();
