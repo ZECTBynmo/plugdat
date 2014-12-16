@@ -18,11 +18,11 @@ function PlugDat() {
 	// Setup various components
 	this.startAutoWoot();
 	this.setupChatHandlers();
-	this.setupAutoSkip();
+	//this.setupAutoSkip();
 	this.setupChatHistory();
 
 	// Inject something into the page to mark that we're here
-	$("#room-name").append("<font id='zectWasHere' size='1'> <a target='_blank' href='https://github.com/ZECTBynmo/plugdat'><font color='red'>PlugDat</font></a> v0.4.2</font>");
+	$("#room-name").append("<font id='zectWasHere' size='1'> <a target='_blank' href='https://github.com/ZECTBynmo/plugdat'><font color='red'>PlugDat</font></a> v0.4.3</font>");
 }
 
 
